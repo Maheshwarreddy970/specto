@@ -8,14 +8,14 @@ export async function uploadToS3(
       const s3 = new S3({
         region: "ap-south-1",
         credentials: {
-          accessKeyId: "AKIAXMGTIHW6BTUJUP4X",
-          secretAccessKey:"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",
+          accessKeyId: process.env.NEXT_PUBLIC_S3_ACCESS_KEY_ID!,
+          secretAccessKey: process.env.NEXT_PUBLIC_S3_SECRET_ACCESS_KEY!,
         },
       });
       let file_key ="uploads/" + Date.now().toString() + file[0].name.replaceAll(' ','_');
       //file_key=encodeURIComponent(file_key)
       const params = {
-        Bucket: "chatdocai",
+        Bucket: process.env.NEXT_PUBLIC_S3_BUCKET_NAME!,
         Key: file_key,
         Body: file[0],
       };
