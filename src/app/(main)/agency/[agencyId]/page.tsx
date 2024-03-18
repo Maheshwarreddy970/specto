@@ -1,3 +1,4 @@
+import CircleProgress from '@/components/global/circle-progress'
 import {
   Card,
   CardContent,
@@ -15,6 +16,7 @@ import {
   Contact2,
   DollarSign,
   Goal,
+  ShoppingCart,
 } from 'lucide-react'
 import Link from 'next/link'
 import React from 'react'
@@ -49,9 +51,6 @@ const Page = async ({
       agencyId: params.agencyId,
     },
   })
-
- 
-
   return (
     <div className="relative h-full">
       {!agencyDetails.connectAccountId && (
@@ -170,6 +169,28 @@ const Page = async ({
               <CardTitle>Conversions</CardTitle>
             </CardHeader>
             <CardContent>
+              <CircleProgress
+                value={closingRate}
+                description={
+                  <>
+                    {sessions && (
+                      <div className="flex flex-col">
+                        Abandoned
+                        <div className="flex gap-2">
+                          <ShoppingCart className="text-rose-700" />
+                          {9}
+                        </div>
+                      </div>
+                    )}
+                    {totalClosedSessions && (
+                      <div className="felx flex-col">
+                        Won Carts
+                       
+                      </div>
+                    )}
+                  </>
+                }
+              />
             </CardContent>
           </Card>
         </div>
