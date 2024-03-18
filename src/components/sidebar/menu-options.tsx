@@ -276,18 +276,19 @@ const MenuOptions = ({
                       val = <result.path />
                     }
                     return (
-                      <CommandItem
+                      <button
                         key={sidebarOptions.id}
                         className="md:w-[320px] w-full"
                       >
+                        
                         <Link
                           href={sidebarOptions.link}
                           className="flex items-center gap-2 hover:bg-transparent rounded-md transition-all md:w-full w-[320px]"
                         >
                           {val}
                           <span>{sidebarOptions.name}</span>
-                        </Link>
-                      </CommandItem>
+                        </Link>                    
+                      </button>
                     )
                   })}
                 </CommandGroup>
