@@ -8,15 +8,13 @@ type Props = {
 }
 
 const SubAccountMainPage = async ({ searchParams }: Props) => {
-  const agencyId = await verifyAndAcceptInvitation()
+  const agencyId = await verifyAndAcceptInvitation();
 
   if (!agencyId) {
     return <Unauthorized />
   }
-
   const user = await getAuthUserDetails()
   if (!user) return
-
   const getFirstSubaccountWithAccess = user.Permissions.find(
     (permission) => permission.access === true
   )
@@ -30,7 +28,7 @@ const SubAccountMainPage = async ({ searchParams }: Props) => {
     )
   }
 
-  if (getFirstSubaccountWithAccess) {
+  if (getFirstSubaccountWithAccess ) {
     return redirect(`/subaccount/${getFirstSubaccountWithAccess.subAccountId}`)
   }
 

@@ -1,7 +1,5 @@
 import BlurPage from '@/components/global/blur-page'
 import CircleProgress from '@/components/global/circle-progress'
-import PipelineValue from '@/components/global/pipeline-value'
-import SubaccountFunnelChart from '@/components/global/subaccount-funnel-chart'
 import { Badge } from '@/components/ui/badge'
 import {
   Card,
@@ -53,56 +51,6 @@ const SubaccountPageId = async ({ params, searchParams }: Props) => {
   const endDate = new Date(`${currentYear}-12-31T23:59:59Z`).getTime() / 1000
 
   if (!subaccountDetails) return
-
-  if (subaccountDetails.connectAccountId) {
-    const response = await stripe.accounts.retrieve({
-      stripeAccount: subaccountDetails.connectAccountId,
-    })
-    currency = response.default_currency?.toUpperCase() || 'USD'
-    const checkoutSessions = await stripe.checkout.sessions.list(
-      { created: { gte: startDate, lte: endDate }, limit: 100 },
-      {
-        stripeAccount: subaccountDetails.connectAccountId,
-      }
-    )
-    sessions = checkoutSessions.data.map((session) => ({
-      ...session,
-      created: new Date(session.created).toLocaleDateString(),
-      amount_total: session.amount_total ? session.amount_total / 100 : 0,
-    }))
-
-    totalClosedSessions = checkoutSessions.data
-      .filter((session) => session.status === 'complete')
-      .map((session) => ({
-        ...session,
-        created: new Date(session.created).toLocaleDateString(),
-        amount_total: session.amount_total ? session.amount_total / 100 : 0,
-      }))
-
-    totalPendingSessions = checkoutSessions.data
-      .filter(
-        (session) => session.status === 'open' || session.status === 'expired'
-      )
-      .map((session) => ({
-        ...session,
-        created: new Date(session.created).toLocaleDateString(),
-        amount_total: session.amount_total ? session.amount_total / 100 : 0,
-      }))
-
-    net = +totalClosedSessions
-      .reduce((total, session) => total + (session.amount_total || 0), 0)
-      .toFixed(2)
-
-    potentialIncome = +totalPendingSessions
-      .reduce((total, session) => total + (session.amount_total || 0), 0)
-      .toFixed(2)
-
-    closingRate = +(
-      (totalClosedSessions.length / checkoutSessions.data.length) *
-      100
-    ).toFixed(2)
-  }
-
   const funnels = await db.funnel.findMany({
     where: {
       subAccountId: params.subaccountId,
@@ -176,7 +124,6 @@ const SubaccountPageId = async ({ params, searchParams }: Props) => {
               </CardContent>
               <Contact2 className="absolute right-4 top-4 text-muted-foreground" />
             </Card>
-            <PipelineValue subaccountId={params.subaccountId} />
 
             <Card className="xl:w-fit">
               <CardHeader>
@@ -190,7 +137,7 @@ const SubaccountPageId = async ({ params, searchParams }: Props) => {
                           Total Carts Opened
                           <div className="flex gap-2">
                             <ShoppingCart className="text-rose-700" />
-                            {sessions.length}
+                            {80}
                           </div>
                         </div>
                       )}
@@ -199,7 +146,7 @@ const SubaccountPageId = async ({ params, searchParams }: Props) => {
                           Won Carts
                           <div className="flex gap-2">
                             <ShoppingCart className="text-emerald-700" />
-                            {totalClosedSessions.length}
+                            {90}
                           </div>
                         </div>
                       )}
@@ -216,7 +163,6 @@ const SubaccountPageId = async ({ params, searchParams }: Props) => {
                 <CardDescription>Funnel Performance</CardDescription>
               </CardHeader>
               <CardContent className=" text-sm text-muted-foreground flex flex-col gap-12 justify-between ">
-                <SubaccountFunnelChart data={funnelPerformanceMetrics} />
                 <div className="lg:w-[150px]">
                   Total page visits across all funnels. Hover over to get more
                   details on funnel page performance.
@@ -262,32 +208,6 @@ const SubaccountPageId = async ({ params, searchParams }: Props) => {
                       <TableHead className="text-right">Value</TableHead>
                     </TableRow>
                   </TableHeader>
-                  <TableBody className="font-medium truncate">
-                    {totalClosedSessions
-                      ? totalClosedSessions.map((session) => (
-                          <TableRow key={session.id}>
-                            <TableCell>
-                              {session.customer_details?.email || '-'}
-                            </TableCell>
-                            <TableCell>
-                              <Badge className="bg-emerald-500 dark:text-black">
-                                Paid
-                              </Badge>
-                            </TableCell>
-                            <TableCell>
-                              {new Date(session.created).toUTCString()}
-                            </TableCell>
-
-                            <TableCell className="text-right">
-                              <small>{currency}</small>{' '}
-                              <span className="text-emerald-500">
-                                {session.amount_total}
-                              </span>
-                            </TableCell>
-                          </TableRow>
-                        ))
-                      : 'No Data'}
-                  </TableBody>
                 </Table>
               </CardHeader>
             </Card>
