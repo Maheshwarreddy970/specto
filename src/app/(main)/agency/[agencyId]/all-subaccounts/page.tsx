@@ -50,7 +50,7 @@ const AllSubaccountsPage = async ({ params }: Props) => {
             <CommandGroup heading="Sub Accounts">
               {!!user.Agency?.SubAccount.length ? (
                 user.Agency.SubAccount.map((subaccount: SubAccount) => (
-                  <CommandItem
+                  <div
                     key={subaccount.id}
                     className="h-32 !bg-background my-2 text-primary border-[1px] border-border p-4 rounded-lg hover:!bg-background cursor-pointer transition-all"
                   >
@@ -103,7 +103,7 @@ const AllSubaccountsPage = async ({ params }: Props) => {
                         </AlertDialogAction>
                       </AlertDialogFooter>
                     </AlertDialogContent>
-                  </CommandItem>
+                  </div>
                 ))
               ) : (
                 <div className="text-muted-foreground text-center p-4">
