@@ -187,6 +187,7 @@ const PipelineLane: React.FC<PipelaneLaneProps> = ({
                           className="mt-2"
                         >
                           {tickets.map((ticket, index) => (
+
                             <PipelineTicket
                               allTickets={allTickets}
                               setAllTickets={setAllTickets}
