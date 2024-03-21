@@ -5,22 +5,24 @@ import { NextResponse } from 'next/server'
 // Please edit this to allow other routes to be public as needed.
 // See https://clerk.com/docs/references/nextjs/auth-middleware for more information about configuring your Middleware
 export default authMiddleware({
-  publicRoutes: ['/site'],
+  publicRoutes: ['/site', '/api/uploadthing'],
   async beforeAuth(auth, req) {},
   async afterAuth(auth, req) {
     //rewrite for domains
     const url = req.nextUrl
-    const searchParams =url.searchParams.toString()
+    const searchParams = url.searchParams.toString()
     let hostname = req.headers
-   //console.log(hostname)
+
     const pathWithSearchParams = `${url.pathname}${
       searchParams.length > 0 ? `?${searchParams}` : ''
     }`
+
     //if subdomain exists
     const customSubDomain = hostname
       .get('host')
       ?.split(`${process.env.NEXT_PUBLIC_DOMAIN}`)
       .filter(Boolean)[0]
+
     if (customSubDomain) {
       return NextResponse.rewrite(
         new URL(`/${customSubDomain}${pathWithSearchParams}`, req.url)

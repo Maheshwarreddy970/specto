@@ -18,7 +18,7 @@ import {
   CardContent,
 } from '@/components/ui/card'
 import { useForm } from 'react-hook-form'
-import { Funnel, Pipeline } from '@prisma/client'
+import { Pipeline } from '@prisma/client'
 import { Input } from '../ui/input'
 
 import { Button } from '../ui/button'
@@ -26,7 +26,6 @@ import Loading from '../global/loading'
 import { CreatePipelineFormSchema } from '@/lib/types'
 import {
   saveActivityLogsNotification,
-  upsertFunnel,
   upsertPipeline,
 } from '@/lib/queries'
 import { v4 } from 'uuid'

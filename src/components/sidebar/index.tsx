@@ -37,6 +37,7 @@ const Sidebar = async ({ id, type }: Props) => {
       ? user.Agency.SidebarOption || []
       : user.Agency.SubAccount.find((subaccount) => subaccount.id === id)
           ?.SidebarOption || []
+
   const subaccounts = user.Agency.SubAccount.filter((subaccount) =>
     user.Permissions.find(
       (permission) =>
