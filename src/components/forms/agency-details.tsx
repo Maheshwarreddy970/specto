@@ -121,11 +121,25 @@ const AgencyDetails = ({ data }: Props) => {
             state: values.zipCode,
           },
         }
+
+        const customerResponse = await fetch('/api/stripe/create-customer', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(bodyData),
+        })
+        const customerData: { customerId: string } =
+          await customerResponse.json()
+        custId = customerData.customerId
       }
+
       newUserData = await initUser({ role: 'AGENCY_OWNER' })
+      if (!data?.customerId && !custId) return
+
       const response = await upsertAgency({
         id: data?.id ? data.id : v4(),
-        customerId: '',
+        customerId: data?.customerId || custId || '',
         address: values.address,
         agencyLogo: values.agencyLogo,
         city: values.city,
@@ -424,7 +438,7 @@ const AgencyDetails = ({ data }: Props) => {
               <div className="text-muted-foreground">
                 Deleting your agency cannpt be undone. This will also delete all
                 sub accounts and all data related to your sub accounts. Sub
-                accounts will no longer have access to funnels, contacts etc.
+                accounts will no longer have access, contacts etc.
               </div>
               <AlertDialogTrigger
                 disabled={isLoading || deletingAgency}

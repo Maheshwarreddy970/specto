@@ -1,4 +1,5 @@
 'use client'
+import SubscriptionFormWrapper from '@/components/forms/subscription-form/subscription-form-wrapper'
 import CustomModal from '@/components/global/custom-modal'
 import { Button } from '@/components/ui/button'
 import {
@@ -9,6 +10,7 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card'
+import { PricesList } from '@/lib/types'
 import { useModal } from '@/providers/modal-provider'
 import { useSearchParams } from 'next/navigation'
 import React from 'react'
@@ -23,7 +25,7 @@ type Props = {
   highlightTitle: string
   highlightDescription: string
   customerId: string
-  prices: 'data'
+  prices: PricesList['data']
   planExists: boolean
 }
 
@@ -45,7 +47,23 @@ const PricingCard = ({
   const plan = searchParams.get('plan')
 
   const handleManagePlan = async () => {
-
+    setOpen(
+      <CustomModal
+        title={'Manage Your Plan'}
+        subheading="You can change your plan at any time from the billings settings"
+      >
+        <SubscriptionFormWrapper
+          customerId={customerId}
+          planExists={planExists}
+        />
+      </CustomModal>,
+      async () => ({
+        plans: {
+          defaultPriceId: plan ? plan : '',
+          plans: prices,
+        },
+      })
+    )
   }
   return (
     <Card className="flex flex-col justify-between lg:w-1/2">
