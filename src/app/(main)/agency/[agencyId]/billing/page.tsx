@@ -37,7 +37,7 @@ const page = async ({ params }: Props) => {
   })
 
   const prices = await stripe.prices.list({
-    product: process.env.NEXT_PLURA_PRODUCT_ID,
+    product: process.env.NEXT_Specto_PRODUCT_ID,
     active: true,
   })
 
@@ -86,7 +86,7 @@ const page = async ({ params }: Props) => {
               : 'Get Started'
           }
           highlightDescription="Want to modify your plan? You can do this here. If you have
-          further question contact support@plura-app.com"
+          further question contact support@Specto-app.com"
           highlightTitle="Plan Options"
           description={
             agencySubscription?.Subscription?.active === true
