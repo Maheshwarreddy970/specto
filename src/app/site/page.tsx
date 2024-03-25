@@ -1,13 +1,11 @@
 import { CardBody, CardContainer, CardItem } from '@/components/global/3d-card'
-import { HeroParallax } from '@/components/global/connect-parallax'
 import { ContainerScroll } from '@/components/global/container-scroll-animation'
 import { LampComponent } from '@/components/global/lamp'
 import Navbar from '@/components/global/navbar'
 import { Button } from '@/components/ui/button'
-import { products } from './constants'
 import { CheckIcon } from 'lucide-react'
-import Image from 'next/image'
-import { HeroScrollDemo } from '../check/Hero'
+import { HeroScrollDemo } from '../plan/Hero'
+import Link from 'next/link'
 
 export default function Home() {
   //WIP: remove fault IMAge for home page
@@ -20,6 +18,7 @@ export default function Home() {
           <ContainerScroll
             titleComponent={
               <div className="flex items-center flex-col">
+                <Link href="/plan">
                 <Button
                   className="p-8 mb-8 md:mb-0 text-2xl w-fit border-t-2 rounded-full border-[#4D4D4D] bg-[#1F1F1F] hover:bg-white group transition-all flex items-center justify-center gap-4 hover:shadow-xl hover:shadow-neutral-500 duration-500"
                 >
@@ -27,6 +26,8 @@ export default function Home() {
                     Start For Free Today
                   </span>
                 </Button>
+                </Link>
+
                 <h1 className="text-5xl md:text-8xl  bg-clip-text text-transparent bg-gradient-to-b from-white to-neutral-600 font-sans font-bold">
                   Automate Your Work With Fuzzie
                 </h1>
@@ -71,7 +72,10 @@ export default function Home() {
                 </ul>
               </CardItem>
               <div className="flex justify-between items-center mt-8">
+                <Link href="/plan">
+
                 <CardItem
+                  href="/plan"
                   translateZ={20}
                   as="button"
                   className="px-4 py-2 rounded-xl text-xs font-normal dark:text-white"
@@ -79,12 +83,15 @@ export default function Home() {
                   Try now →
                 </CardItem>
                 <CardItem
+                href="/plan"
                   translateZ={20}
                   as="button"
                   className="px-4 py-2 rounded-xl bg-black dark:bg-white dark:text-black text-white text-xs font-bold"
                 >
                   Get Started Now
                 </CardItem>
+                </Link>
+
               </div>
             </CardBody>
           </CardContainer>
@@ -118,6 +125,8 @@ export default function Home() {
                 </ul>
               </CardItem>
               <div className="flex justify-between items-center mt-8">
+                <Link href="/plan">
+
                 <CardItem
                   translateZ={20}
                   as="button"
@@ -132,6 +141,7 @@ export default function Home() {
                 >
                   Get Started Now
                 </CardItem>
+                </Link>
               </div>
             </CardBody>
           </CardContainer>
@@ -165,6 +175,7 @@ export default function Home() {
                 </ul>
               </CardItem>
               <div className="flex justify-between items-center mt-8">
+                <Link href="/plan">
                 <CardItem
                   translateZ={20}
                   as="button"
@@ -179,6 +190,7 @@ export default function Home() {
                 >
                   Get Started Now
                 </CardItem>
+                </Link>
               </div>
             </CardBody>
           </CardContainer>

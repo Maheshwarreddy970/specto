@@ -103,22 +103,19 @@ const MenuOptions = ({
           <Popover>
             <PopoverTrigger asChild>
               <Button
-                className="w-full my-4 flex items-center justify-between py-8"
+                className="px-4 py-2 rounded-md border border-black bg-white text-neutarl-700 text-sm hover:shadow-[4px_4px_0px_0px_rgba(0,0,0)] transition duration-200 w-full my-4 flex items-center justify-between"
                 variant="ghost"
               >
                 <div className="flex items-center text-left gap-2">
-                  <Compass />
-                  <div className="flex flex-col">
+                  <Compass className='text-black'/>
+                  <div className="flex text-black flex-col">
                     {details.name}
-                    <span className="text-muted-foreground">
-                      {details.address}
-                    </span>
                   </div>
                 </div>
                 <div>
                   <ChevronsUpDown
                     size={16}
-                    className="text-muted-foreground"
+                    className="text-muted-foreground text-black"
                   />
                 </div>
               </Button>
@@ -134,10 +131,12 @@ const MenuOptions = ({
                       <CommandGroup heading="Agency">
                         <CommandItem className="!bg-transparent my-2 text-primary broder-[1px] border-border p-2 rounded-md hover:!bg-muted cursor-pointer transition-all">
                           {defaultOpen ? (
+                            
                             <Link
                               href={`/agency/${user?.Agency?.id}`}
                               className="flex gap-4 w-full h-full"
                             >
+                              
                               <div className="relative w-16">
                                 <Image
                                   src={user?.Agency?.agencyLogo}
@@ -278,8 +277,9 @@ const MenuOptions = ({
                     return (
                       <CommandItem
                         key={sidebarOptions.id}
-                        className="md:w-[320px] w-full"
+                        className="px-4 py-2 rounded-md border border-neutral-300 bg-neutral-100 text-neutral-500 text-sm hover:-translate-y-1 transform transition duration-200 hover:shadow-md "
                       >
+                        
                         <Link
                           href={sidebarOptions.link}
                           className="flex items-center gap-2 hover:bg-transparent rounded-md transition-all md:w-full w-[320px]"
