@@ -57,11 +57,7 @@ const FileUpload = ({ apiEndpoint, onChange, value }: Props) => {
  <Dropzone
       multiple={false}
       onDrop={async (acceptedFile: any) => {
-
-        // handle file uploading
-        console.log(acceptedFile);
         const res = await uploadToS3(acceptedFile);
-        console.log(res)
         if (!res) {
           console.log("res error")
         }
@@ -84,7 +80,7 @@ const FileUpload = ({ apiEndpoint, onChange, value }: Props) => {
                   or drag and drop
                 </p>
                 <p className='text-xs text-zinc-500'>
-                  PDF up to 10 MB
+                  Image up to 5 MB
                 </p>
               </div>
 

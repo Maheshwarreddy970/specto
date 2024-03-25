@@ -11,12 +11,13 @@ import {
   SheetTitle,
   SheetTrigger,
 } from '../ui/sheet'
-import { Bell } from 'lucide-react'
 import { Role } from '@prisma/client'
 import { Card } from '../ui/card'
 import { Switch } from '../ui/switch'
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar'
-import { ModeToggle } from './mode-toggle'
+import { ThemeToggle } from './ThemeTouggle'
+import Bell from '../costcomponents/Bell'
+
 
 type Props = {
   notifications: NotificationWithUser | []
@@ -52,12 +53,13 @@ const InfoBar = ({ notifications, subAccountId, className, role }: Props) => {
         )}
       >
         <div className="flex items-center gap-2 ml-auto">
-          <UserButton afterSignOutUrl="/" />
+          <div className='mr-2 size-[16]'>
+        <UserButton afterSignOutUrl="/" />
+          </div>
+
           <Sheet>
             <SheetTrigger>
-              <div className="rounded-full w-9 h-9 bg-primary flex items-center justify-center text-white">
-                <Bell size={17} />
-              </div>
+              <Bell></Bell>
             </SheetTrigger>
             <SheetContent className="mt-4 mr-4 pr-4 overflow-scroll">
               <SheetHeader className="text-left">
@@ -115,7 +117,7 @@ const InfoBar = ({ notifications, subAccountId, className, role }: Props) => {
               )}
             </SheetContent>
           </Sheet>
-          <ModeToggle />
+          <ThemeToggle />
         </div>
       </div>
     </>

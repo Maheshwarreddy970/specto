@@ -25,6 +25,7 @@ import { ContactUserFormSchema } from '@/lib/types'
 import { saveActivityLogsNotification, upsertContact } from '@/lib/queries'
 import { useRouter } from 'next/navigation'
 import { useModal } from '@/providers/modal-provider'
+import ButtonLoading from '../global/button-loading'
 
 interface ContactUserFormProps {
   subaccountId: string
@@ -128,7 +129,7 @@ const ContactUserForm: React.FC<ContactUserFormProps> = ({ subaccountId }) => {
               type="submit"
             >
               {form.formState.isSubmitting ? (
-                <Loading />
+                <ButtonLoading />
               ) : (
                 'Save Contact Details!'
               )}
