@@ -1,8 +1,6 @@
 import type { Metadata } from 'next'
 import { DM_Sans } from 'next/font/google'
 import './globals.css'
-import { ClerkProvider } from '@clerk/nextjs'
-import { dark } from '@clerk/themes'
 import { ThemeProvider } from '@/providers/theme-provider'
 import ModalProvider from '@/providers/modal-provider'
 import { Toaster } from '@/components/ui/toaster'
@@ -26,6 +24,7 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body className={font.className}>
+
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
@@ -38,6 +37,7 @@ export default function RootLayout({
             <SonnarToaster position="bottom-left" />
           </ModalProvider>
         </ThemeProvider>
+
       </body>
     </html>
   )

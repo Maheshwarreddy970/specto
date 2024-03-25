@@ -21,6 +21,7 @@ import {
 import { Input } from '../ui/input'
 import { Button } from '../ui/button'
 import Loading from '../global/loading'
+import ButtonLoading from '../global/button-loading'
 
 type Props = {
   title: string
@@ -93,7 +94,7 @@ const ContactForm = ({ apiCall, subTitle, title }: Props) => {
               disabled={isLoading}
               type="submit"
             >
-              {form.formState.isSubmitting ? <Loading /> : 'Get a free quote!'}
+              {form.formState.isSubmitting ? <ButtonLoading /> : 'Get a free quote!'}
             </Button>
           </form>
         </Form>

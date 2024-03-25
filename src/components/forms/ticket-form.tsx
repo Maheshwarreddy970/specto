@@ -38,7 +38,7 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar'
 import { CheckIcon, ChevronsUpDownIcon, User2 } from 'lucide-react'
 import { Popover, PopoverContent, PopoverTrigger } from '../ui/popover'
-import { Button } from '../ui/button'
+import { Button} from '../ui/button'
 import {
   Command,
   CommandEmpty,
@@ -283,7 +283,7 @@ const TicketForm = ({ getNewTicket, laneId, subaccountId }: Props) => {
                 <Command>
                   <CommandInput
                     placeholder="Search..."
-                    className="h-9"
+                    className="h-9 "
                     value={search}
                     onChangeCapture={async (value) => {
                       //@ts-ignore

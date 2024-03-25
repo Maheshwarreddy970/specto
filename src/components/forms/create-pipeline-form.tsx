@@ -33,6 +33,7 @@ import { toast } from '../ui/use-toast'
 import { useModal } from '@/providers/modal-provider'
 import { useRouter } from 'next/navigation'
 import { zodResolver } from '@hookform/resolvers/zod'
+import ButtonLoading from '../global/button-loading'
 
 interface CreatePipelineFormProps {
   defaultData?: Pipeline
@@ -127,7 +128,7 @@ const CreatePipelineForm: React.FC<CreatePipelineFormProps> = ({
               disabled={isLoading}
               type="submit"
             >
-              {form.formState.isSubmitting ? <Loading /> : 'Save'}
+              {form.formState.isSubmitting ? <ButtonLoading /> : 'Save'}
             </Button>
           </form>
         </Form>

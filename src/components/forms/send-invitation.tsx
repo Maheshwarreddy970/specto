@@ -30,6 +30,7 @@ import { Button } from '../ui/button'
 import Loading from '../global/loading'
 import { saveActivityLogsNotification, sendInvitation } from '@/lib/queries'
 import { useToast } from '../ui/use-toast'
+import ButtonLoading from '../global/button-loading'
 
 interface SendInvitationProps {
   agencyId: string
@@ -140,7 +141,7 @@ const SendInvitation: React.FC<SendInvitationProps> = ({ agencyId }) => {
               disabled={form.formState.isSubmitting}
               type="submit"
             >
-              {form.formState.isSubmitting ? <Loading /> : 'Send Invitation'}
+              {form.formState.isSubmitting ? <ButtonLoading /> : 'Send Invitation'}
             </Button>
           </form>
         </Form>

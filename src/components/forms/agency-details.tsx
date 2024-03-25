@@ -1,4 +1,7 @@
 'use client'
+import { Label } from "../ui/label";
+import { cn } from "@/utils/cn";
+
 import { Agency } from '@prisma/client'
 import { useForm } from 'react-hook-form'
 import React, { useEffect, useState } from 'react'
@@ -49,6 +52,7 @@ import {
 } from '@/lib/queries'
 import { Button } from '../ui/button'
 import Loading from '../global/loading'
+import ButtonLoading from "../global/button-loading";
 
 type Props = {
   data?: Partial<Agency>
@@ -194,8 +198,8 @@ const AgencyDetails = ({ data }: Props) => {
   }
 
   return (
-    <AlertDialog>
-      <Card className="w-full">
+    <AlertDialog >
+      <Card className="z-[10] w-full">
         <CardHeader>
           <CardTitle>Agency Information</CardTitle>
           <CardDescription>
@@ -422,10 +426,13 @@ const AgencyDetails = ({ data }: Props) => {
                 </div>
               )}
               <Button
-                type="submit"
+                className="bg-gradient-to-br relative group/btn from-black dark:from-zinc-900 dark:to-zinc-900 to-neutral-600 block dark:bg-zinc-800 w-full text-white rounded-md h-10 font-medium shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset]"
+               type="submit"
                 disabled={isLoading}
               >
-                {isLoading ? <Loading /> : 'Save Agency Information'}
+                {isLoading ? <ButtonLoading /> : 'Save Agency Information'}
+                <BottomGradient />
+
               </Button>
             </form>
           </Form>
@@ -476,3 +483,27 @@ const AgencyDetails = ({ data }: Props) => {
 }
 
 export default AgencyDetails
+
+
+const BottomGradient = () => {
+  return (
+    <>
+      <span className="group-hover/btn:opacity-100 block transition duration-500 opacity-0 absolute h-px w-full -bottom-px inset-x-0 bg-gradient-to-r from-transparent via-cyan-500 to-transparent" />
+      <span className="group-hover/btn:opacity-100 blur-sm block transition duration-500 opacity-0 absolute h-px w-1/2 mx-auto -bottom-px inset-x-10 bg-gradient-to-r from-transparent via-indigo-500 to-transparent" />
+    </>
+  );
+};
+
+const LabelInputContainer = ({
+  children,
+  className,
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) => {
+  return (
+    <div className={cn("bg-green-600 flex flex-col space-y-2 w-full", className)}>
+      {children}
+    </div>
+  );
+};

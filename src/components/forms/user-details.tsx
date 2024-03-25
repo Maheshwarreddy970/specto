@@ -49,6 +49,7 @@ import Loading from '../global/loading'
 import { Separator } from '../ui/separator'
 import { Switch } from '../ui/switch'
 import { v4 } from 'uuid'
+import ButtonLoading from '../global/button-loading'
 
 type Props = {
   id: string | null
@@ -210,7 +211,7 @@ const UserDetails = ({ id, type, subAccounts, userData }: Props) => {
   }
 
   return (
-    <Card className="w-full">
+    <Card className="">
       <CardHeader>
         <CardTitle>User Details</CardTitle>
         <CardDescription>Add or update your information</CardDescription>
@@ -335,7 +336,7 @@ const UserDetails = ({ id, type, subAccounts, userData }: Props) => {
               disabled={form.formState.isSubmitting}
               type="submit"
             >
-              {form.formState.isSubmitting ? <Loading /> : 'Save User Details'}
+              {form.formState.isSubmitting ? <ButtonLoading /> : 'Save User Details'}
             </Button>
             {authUserData?.role === 'AGENCY_OWNER' && (
               <div>

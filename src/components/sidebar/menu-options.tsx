@@ -276,7 +276,7 @@ const MenuOptions = ({
                       val = <result.path />
                     }
                     return (
-                      <div
+                      <CommandItem
                         key={sidebarOptions.id}
                         className="md:w-[320px] w-full"
                       >
@@ -287,7 +287,7 @@ const MenuOptions = ({
                           {val}
                           <span>{sidebarOptions.name}</span>
                         </Link>
-                      </div>
+                      </CommandItem>
                     )
                   })}
                 </CommandGroup>
