@@ -72,11 +72,11 @@ const LaunchPad = async ({ params, searchParams }: Props) => {
   return (
     <BlurPage>
       <div className="flex flex-col justify-center items-center">
-        <div className="w-full h-full max-w-[800px]">
+        <div className="w-full h-full max-w-[800px] bg-white">
           <Card className="border-none ">
             <CardHeader>
               <CardTitle>Lets get started!</CardTitle>
-              <CardDescription>
+              <CardDescription >
                 Follow the steps below to get your account setup correctly.
               </CardDescription>
             </CardHeader>
@@ -90,7 +90,7 @@ const LaunchPad = async ({ params, searchParams }: Props) => {
                     width={80}
                     className="rounded-md object-contain"
                   />
-                  <p>Save the website as a shortcut on your mobile devide</p>
+                  <p >Save the website as a shortcut on your mobile devide</p>
                 </div>
                 <Button>Start</Button>
               </div>

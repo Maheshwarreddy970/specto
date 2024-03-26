@@ -70,8 +70,8 @@ const LaunchPadPage = async ({ params, searchParams }: Props) => {
       <div className="w-full h-full max-w-[800px]">
         <Card className="border-none">
           <CardHeader>
-            <CardTitle>Lets get started!</CardTitle>
-            <CardDescription>
+            <CardTitle className='text-black'>Lets get started!</CardTitle>
+            <CardDescription className=''>
               Follow the steps below to get your account setup.
             </CardDescription>
           </CardHeader>
@@ -85,7 +85,7 @@ const LaunchPadPage = async ({ params, searchParams }: Props) => {
                   width={80}
                   className="rounded-md object-contain"
                 />
-                <p> Save the website as a shortcut on your mobile device</p>
+                <p className='text-black'> Save the website as a shortcut on your mobile device</p>
               </div>
               <Button>Start</Button>
             </div>
@@ -98,7 +98,7 @@ const LaunchPadPage = async ({ params, searchParams }: Props) => {
                   width={80}
                   className="rounded-md object-contain"
                 />
-                <p>
+                <p className='text-black'>
                   Connect your stripe account to accept payments and see your
                   dashboard.
                 </p>
@@ -106,7 +106,7 @@ const LaunchPadPage = async ({ params, searchParams }: Props) => {
               {agencyDetails.connectAccountId || connectedStripeAccount ? (
                 <CheckCircleIcon
                   size={50}
-                  className=" text-primary p-2 flex-shrink-0"
+                  className=" text-primary text-green-700 p-2 flex-shrink-0"
                 />
               ) : (
                 <Link
@@ -126,12 +126,12 @@ const LaunchPadPage = async ({ params, searchParams }: Props) => {
                   width={80}
                   className="rounded-md object-contain"
                 />
-                <p> Fill in all your bussiness details</p>
+                <p className='text-black'> Fill in all your bussiness details</p>
               </div>
               {allDetailsExist ? (
                 <CheckCircleIcon
                   size={50}
-                  className="text-primary p-2 flex-shrink-0"
+                  className="text-green-700 text-primary p-2 flex-shrink-0"
                 />
               ) : (
                 <Link
