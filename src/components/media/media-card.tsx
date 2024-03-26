@@ -41,7 +41,7 @@ const MediaCard = ({ file }: Props) => {
               src={file.link}
               alt="preview image"
               fill
-              className="object-cover rounded-lg"
+              className="object-contain rounded-lg"
             />
           </div>
           <p className="opacity-0 h-0 w-0">{file.name}</p>
@@ -57,21 +57,22 @@ const MediaCard = ({ file }: Props) => {
             </div>
           </div>
 
-          <DropdownMenuContent>
+          <DropdownMenuContent className='bg-white'>
             <DropdownMenuLabel>Menu</DropdownMenuLabel>
             <DropdownMenuSeparator />
             <DropdownMenuItem
-              className="flex gap-2"
+              className="flex gap-"
               onClick={() => {
                 navigator.clipboard.writeText(file.link)
                 toast({ title: 'Copied To Clipboard' })
               }}
             >
-              <Copy size={15} /> Copy Image Link
+              <Copy size={15} className='text-black' /> Copy Image Link
             </DropdownMenuItem>
             <AlertDialogTrigger asChild>
-              <DropdownMenuItem className="flex gap-2">
-                <Trash size={15} /> Delete File
+              <DropdownMenuItem className="flex gap-2 text-red-600 p-2 bg-transparent hover:bg-red-100 text-center mt-2 rounded-md hove:bg-red-600 whitespace-nowrap">
+                <Trash className='h-4 mt-1 hover:animate-ping mr-1 w-4 text-red-500' />
+                Delete File
               </DropdownMenuItem>
             </AlertDialogTrigger>
           </DropdownMenuContent>

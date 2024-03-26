@@ -103,12 +103,12 @@ const MenuOptions = ({
           <Popover>
             <PopoverTrigger asChild>
               <Button
-                className="px-4 py-2 rounded-md border border-black bg-white text-neutarl-700 text-sm hover:shadow-[4px_4px_0px_0px_rgba(0,0,0)] transition duration-200 w-full my-4 flex items-center justify-between"
+                className="px-4 py-2 rounded-md border text-neutarl-700 text-sm hover:shadow-[4px_4px_0px_0px_rgba(0,0,0)] transition duration-200 w-full my-4 flex items-center justify-between"
                 variant="ghost"
               >
                 <div className="flex items-center text-left gap-2">
-                  <Compass className='text-black'/>
-                  <div className="flex text-black flex-col">
+                  <Compass />
+                  <div className="flex  flex-col">
                     {details.name}
                   </div>
                 </div>
@@ -122,14 +122,14 @@ const MenuOptions = ({
             </PopoverTrigger>
             <PopoverContent className="w-80 h-80 mt-4 z-[200]">
               <Command className="rounded-lg">
-                <CommandInput placeholder="Search Accounts..." />
+                <CommandInput className='text-black' placeholder="Search Accounts..." />
                 <CommandList className="pb-16">
                   <CommandEmpty> No results found</CommandEmpty>
                   {(user?.role === 'AGENCY_OWNER' ||
                     user?.role === 'AGENCY_ADMIN') &&
                     user?.Agency && (
-                      <CommandGroup heading="Agency">
-                        <CommandItem className="!bg-transparent my-2 text-primary broder-[1px] border-border p-2 rounded-md hover:!bg-muted cursor-pointer transition-all">
+                      <CommandGroup className='CommandInput' heading="Agency">
+                        <CommandItem className="my-2 text-primary broder-[1px] border-border p-2 rounded-md hover:!bg-muted cursor-pointer transition-all">
                           {defaultOpen ? (
                             
                             <Link
@@ -145,9 +145,9 @@ const MenuOptions = ({
                                   className="rounded-md object-contain"
                                 />
                               </div>
-                              <div className="flex flex-col flex-1">
+                              <div className="flex  text-black flex-col flex-1">
                                 {user?.Agency?.name}
-                                <span className="text-muted-foreground">
+                                <span className="text-black text-muted-foreground">
                                   {user?.Agency?.address}
                                 </span>
                               </div>
@@ -166,9 +166,9 @@ const MenuOptions = ({
                                     className="rounded-md object-contain"
                                   />
                                 </div>
-                                <div className="flex flex-col flex-1">
+                                <div className="text-black flex flex-col flex-1">
                                   {user?.Agency?.name}
-                                  <span className="text-muted-foreground">
+                                  <span className=" text-black text-muted-foreground">
                                     {user?.Agency?.address}
                                   </span>
                                 </div>
@@ -178,7 +178,7 @@ const MenuOptions = ({
                         </CommandItem>
                       </CommandGroup>
                     )}
-                  <CommandGroup heading="Accounts">
+                  <CommandGroup className="text-black" heading="Accounts">
                     {!!subAccounts
                       ? subAccounts.map((subaccount) => (
                           <CommandItem key={subaccount.id}>
@@ -195,9 +195,9 @@ const MenuOptions = ({
                                     className="rounded-md object-contain"
                                   />
                                 </div>
-                                <div className="flex flex-col flex-1">
+                                <div className="flex text-black flex-col flex-1">
                                   {subaccount.name}
-                                  <span className="text-muted-foreground">
+                                  <span className="text-black text-muted-foreground">
                                     {subaccount.address}
                                   </span>
                                 </div>
@@ -216,9 +216,9 @@ const MenuOptions = ({
                                       className="rounded-md object-contain"
                                     />
                                   </div>
-                                  <div className="flex flex-col flex-1">
+                                  <div className="text-black flex flex-col flex-1">
                                     {subaccount.name}
-                                    <span className="text-muted-foreground">
+                                    <span className="text-black text-muted-foreground">
                                       {subaccount.address}
                                     </span>
                                   </div>
@@ -234,7 +234,7 @@ const MenuOptions = ({
                   user?.role === 'AGENCY_ADMIN') && (
                   <SheetClose>
                     <Button
-                      className="w-full flex gap-2"
+                      className="w-full text-black flex gap-2"
                       onClick={() => {
                         setOpen(
                           <CustomModal
@@ -277,7 +277,7 @@ const MenuOptions = ({
                     return (
                       <CommandItem
                         key={sidebarOptions.id}
-                        className="px-4 py-2 rounded-md border border-black bg-white text-black text-sm hover:-translate-y-1 transform transition duration-200 hover:shadow-md "
+                        className="px-4 py-2 rounded-md text-sm hover:-translate-y-1 transform transition duration-200 hover:shadow-md "
                       >
                         
                         <Link

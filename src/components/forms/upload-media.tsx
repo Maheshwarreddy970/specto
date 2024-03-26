@@ -2,7 +2,7 @@
 import React from 'react'
 import { z } from 'zod'
 import { useToast } from '../ui/use-toast'
-import { useRouter } from 'next/navigation'
+import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import {
@@ -36,7 +36,7 @@ const formSchema = z.object({
 
 const UploadMediaForm = ({ subaccountId }: Props) => {
   const { toast } = useToast()
-  const router = useRouter()
+  const router = useRouter();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     mode: 'onSubmit',
@@ -56,7 +56,9 @@ const UploadMediaForm = ({ subaccountId }: Props) => {
       })
 
       toast({ title: 'Succes', description: 'Uploaded media' })
-      router.refresh()
+      router.refresh();
+      window.location.reload()
+      
     } catch (error) {
       console.log(error)
       toast({
@@ -70,12 +72,12 @@ const UploadMediaForm = ({ subaccountId }: Props) => {
   return (
     <Card className="w-full">
       <CardHeader>
-        <CardTitle>Media Information</CardTitle>
-        <CardDescription>
+        <CardTitle className='text-black'>Media Information</CardTitle>
+        <CardDescription className='text-black'>
           Please enter the details for your file
-        </CardDescription>
+        </CardDescription >
       </CardHeader>
-      <CardContent>
+      <CardContent >
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)}>
             <FormField
@@ -83,8 +85,8 @@ const UploadMediaForm = ({ subaccountId }: Props) => {
               name="name"
               render={({ field }) => (
                 <FormItem className="flex-1">
-                  <FormLabel>File Name</FormLabel>
-                  <FormControl>
+                  <FormLabel className='text-black'>File Name</FormLabel>
+                  <FormControl className='text-black'>
                     <Input
                       placeholder="Your agency name"
                       {...field}
@@ -112,11 +114,12 @@ const UploadMediaForm = ({ subaccountId }: Props) => {
                 </FormItem>
               )}
             />
-            <Button
-              type="submit"
-              className="mt-4"
+            <Button className="p-[3px] relative" type="submit"
             >
-              Upload Media
+              <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-lg" />
+              <div className="px-8 py-2  bg-black rounded-[6px]  relative group transition duration-200 text-white hover:bg-transparent">
+                Upload Media
+              </div>
             </Button>
           </form>
         </Form>

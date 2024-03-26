@@ -100,12 +100,13 @@ const PipelineValue = ({ subaccountId }: Props) => {
             <SelectValue placeholder="Select a pipeline" />
           </SelectTrigger>
           <SelectContent>
-            <SelectGroup>
-              <SelectLabel>Pipelines</SelectLabel>
+            <SelectGroup className='bg-white'>
+              <SelectLabel className='text-black'>Pipelines</SelectLabel>
               {pipelines.map((pipeline) => (
                 <SelectItem
                   value={pipeline.id}
                   key={pipeline.id}
+                  className='text-black'
                 >
                   {pipeline.name}
                 </SelectItem>

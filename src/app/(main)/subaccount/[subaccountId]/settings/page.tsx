@@ -34,7 +34,7 @@ const SubaccountSettingPage = async ({ params }: Props) => {
 
   return (
     <BlurPage>
-      <div className="flex lg:!flex-row flex-col gap-4">
+      <div className="">
         <SubAccountDetails
           agencyDetails={agencyDetails}
           details={subAccount}
