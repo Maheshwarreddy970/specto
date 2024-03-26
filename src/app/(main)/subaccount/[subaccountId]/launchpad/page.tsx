@@ -72,10 +72,10 @@ const LaunchPad = async ({ params, searchParams }: Props) => {
   return (
     <BlurPage>
       <div className="flex flex-col justify-center items-center">
-        <div className="w-full h-full max-w-[800px] bg-white">
+        <div className="w-full h-full max-w-[800px]">
           <Card className="border-none ">
             <CardHeader>
-              <CardTitle>Lets get started!</CardTitle>
+              <CardTitle className='dark:text-white'>Lets get started!</CardTitle>
               <CardDescription >
                 Follow the steps below to get your account setup correctly.
               </CardDescription>

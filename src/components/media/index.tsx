@@ -29,11 +29,11 @@ const MediaComponent = ({ data, subaccountId }: Props) => {
         <CommandList className="pb-40 max-h-full ">
           <CommandEmpty>No Media Files</CommandEmpty>
           <CommandGroup heading="Media Files">
-            <div className="flex flex-wrap gap-4 pt-4">
+            <div className="grid grid-cols-4 pt-4">
               {data?.Media.map((file) => (
                 <CommandItem
                   key={file.id}
-                  className="p-0 w-1/12 rounded-lg !bg-transparent !font-medium !text-white"
+                  className="p-0 sm:3/12 rounded-lg !bg-transparent !font-medium !text-white"
                 >
                   <ThreeDCardDemo  file={file}></ThreeDCardDemo>
                 </CommandItem>
