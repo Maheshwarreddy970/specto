@@ -9,6 +9,7 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from '@/components/ui/alert-dialog'
+import { Trash } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import {
   Command,
@@ -50,7 +51,7 @@ const AllSubaccountsPage = async ({ params }: Props) => {
             <CommandGroup heading="Sub Accounts">
               {!!user.Agency?.SubAccount.length ? (
                 user.Agency.SubAccount.map((subaccount: SubAccount) => (
-                  <div
+                  <CommandItem
                     key={subaccount.id}
                     className="h-32 !bg-background my-2 text-primary border-[1px] border-border p-4 rounded-lg hover:!bg-background cursor-pointer transition-all"
                   >
@@ -79,23 +80,24 @@ const AllSubaccountsPage = async ({ params }: Props) => {
                       <Button
                         size={'sm'}
                         variant={'destructive'}
-                        className="w-20 hover:bg-red-600 hover:text-white !text-white"
+                        className="text-red-600 p-2 bg-transparent hover:bg-red-100 text-center rounded-md hove:bg-red-600 whitespace-nowrap"
                       >
+                    <Trash className='h-4 hover:animate-ping mr-1 w-4 text-red-500' />
                         Delete
                       </Button>
                     </AlertDialogTrigger>
                     <AlertDialogContent>
                       <AlertDialogHeader>
-                        <AlertDialogTitle className="text-left">
+                        <AlertDialogTitle className="text-black text-left">
                           Are your absolutely sure
                         </AlertDialogTitle>
-                        <AlertDescription className="text-left">
+                        <AlertDescription className="text-black text-left">
                           This action cannot be undon. This will delete the
                           subaccount and all data related to the subaccount.
                         </AlertDescription>
                       </AlertDialogHeader>
-                      <AlertDialogFooter className="flex items-center">
-                        <AlertDialogCancel className="mb-2">
+                      <AlertDialogFooter className="flex  items-center">
+                        <AlertDialogCancel className="text-black mb-2">
                           Cancel
                         </AlertDialogCancel>
                         <AlertDialogAction className="bg-destructive hover:bg-destructive">
@@ -103,7 +105,7 @@ const AllSubaccountsPage = async ({ params }: Props) => {
                         </AlertDialogAction>
                       </AlertDialogFooter>
                     </AlertDialogContent>
-                  </div>
+                  </CommandItem>
                 ))
               ) : (
                 <div className="text-muted-foreground text-center p-4">
