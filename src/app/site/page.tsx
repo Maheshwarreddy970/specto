@@ -12,8 +12,8 @@ export default function Home() {
   return (
     <main className="">
       <Navbar />
-      <section className="h-screen w-full  bg-neutral-950 rounded-md  !overflow-visible relative flex flex-col items-center  antialiased">
-        <div className="absolute inset-0  h-full w-full items-center px-5 py-24 [background:radial-gradient(125%_125%_at_50%_10%,#000_35%,#223_100%)]"></div>
+      <section className="w-full sm:-mb-96 bg-stone-950	 rounded-md  !overflow-visible relative flex flex-col items-center  antialiased">
+        <div className="absolute inset-0  h-full w-full items-center px-5 py-24 bg-stone-950	"></div>
         <div className="flex flex-col md:mt-[-50px]">
           <ContainerScroll
             titleComponent={
@@ -36,10 +36,10 @@ export default function Home() {
           />
         </div>
       </section>
-      <section className="sm:mt-96">
+      <section className="sm:mt-96 bg-stone-950	">
         <HeroScrollDemo></HeroScrollDemo>
       </section>
-      <section className="mt-[-500px]">
+      <section className="mt-[-500px] bg-stone-950		">
         <LampComponent />
         <div className="flex flex-wrap items-center justify-center flex-col md:flex-row gap-8 -mt-72">
           <CardContainer className="inter-var ">

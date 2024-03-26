@@ -7,7 +7,7 @@ import { useForm } from 'react-hook-form'
 import React, { useEffect, useState } from 'react'
 import { NumberInput } from '@tremor/react'
 import { v4 } from 'uuid'
-
+import { Trash } from "lucide-react";
 import { useRouter } from 'next/navigation'
 import {
   AlertDialog,
@@ -438,19 +438,20 @@ const AgencyDetails = ({ data }: Props) => {
           </Form>
 
           {data?.id && (
-            <div className="flex flex-row items-center justify-between rounded-lg border border-destructive gap-4 p-4 mt-4">
+            <div className="sm:flex sm:flex-row sm:items-center sm:justify-between rounded-lg border border-destructive sm:gap-4 p-4 mt-4">
               <div>
-                <div>Danger Zone</div>
+                <div className="text-black underline decoration-red-600">Danger Zone</div>
               </div>
-              <div className="text-muted-foreground">
+              <div className="text-muted-foreground text-black text-xs	text-ellipsis overflow-hidden ...">
                 Deleting your agency cannpt be undone. This will also delete all
                 sub accounts and all data related to your sub accounts. Sub
                 accounts will no longer have access, contacts etc.
               </div>
               <AlertDialogTrigger
                 disabled={isLoading || deletingAgency}
-                className="text-red-600 p-2 text-center mt-2 rounded-md hove:bg-red-600 hover:text-white whitespace-nowrap"
+                className="flex text-red-600 p-2 bg-transparent hover:bg-red-100 text-center mt-2 rounded-md hove:bg-red-600 whitespace-nowrap"
               >
+              <Trash className='h-4 mt-1 hover:animate-ping mr-1 w-4 text-red-500' />
                 {deletingAgency ? 'Deleting...' : 'Delete Agency'}
               </AlertDialogTrigger>
             </div>
@@ -466,12 +467,13 @@ const AgencyDetails = ({ data }: Props) => {
               </AlertDialogDescription>
             </AlertDialogHeader>
             <AlertDialogFooter className="flex items-center">
-              <AlertDialogCancel className="mb-2">Cancel</AlertDialogCancel>
+              <AlertDialogCancel className="mb-2 text-black bg-white hover:text-green-700">Cancel</AlertDialogCancel>
               <AlertDialogAction
                 disabled={deletingAgency}
-                className="bg-destructive hover:bg-destructive"
+                className=" text-red-600 p-2 bg-transparent hover:bg-red-100 text-center rounded-md hove:bg-red-600 whitespace-nowrap"
                 onClick={handleDeleteAgency}
               >
+              <Trash className='h-4 hover:animate-ping mr-1 w-4 text-red-500' />
                 Delete
               </AlertDialogAction>
             </AlertDialogFooter>
