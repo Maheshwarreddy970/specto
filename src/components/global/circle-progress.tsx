@@ -12,11 +12,11 @@ const CircleProgress = ({ description, value = 0 }: Props) => {
     <div className="flex gap-4 items-center">
       <ProgressCircle
         showAnimation={true}
-        value={value}
+        value={80}
         radius={70}
         strokeWidth={20}
       >
-        {value}%
+        {80}%
       </ProgressCircle>
       <div>
         <b>Closing Rate</b>

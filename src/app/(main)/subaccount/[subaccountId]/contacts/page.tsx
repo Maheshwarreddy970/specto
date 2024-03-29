@@ -81,7 +81,7 @@ const ContactPage = async ({ params }: Props) => {
               <TableCell>
                 <Avatar>
                   <AvatarImage alt="@shadcn" />
-                  <AvatarFallback className="bg-primary text-white">
+                  <AvatarFallback className="bg-primary">
                     {contact.name.slice(0, 2).toUpperCase()}
                   </AvatarFallback>
                 </Avatar>

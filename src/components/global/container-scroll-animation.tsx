@@ -1,8 +1,6 @@
 'use client'
 import React, { useRef } from 'react'
 import { useScroll, useTransform, motion } from 'framer-motion'
-import Image from 'next/image'
-import Banner from '@/../public/temp-banner.png';
 
 export const ContainerScroll = ({
   titleComponent,
@@ -14,7 +12,7 @@ export const ContainerScroll = ({
     target: containerRef,
   })
   const [isMobile, setIsMobile] = React.useState(false);
- 
+
   React.useEffect(() => {
     const checkMobile = () => {
       setIsMobile(window.innerWidth <= 768);
@@ -25,11 +23,11 @@ export const ContainerScroll = ({
       window.removeEventListener("resize", checkMobile);
     };
   }, []);
- 
+
   const scaleDimensions = () => {
     return isMobile ? [0.7, 0.9] : [1.05, 1];
   };
- 
+
   const rotate = useTransform(scrollYProgress, [0, 1], [20, 0]);
   const scale = useTransform(scrollYProgress, [0, 1], scaleDimensions());
   const translate = useTransform(scrollYProgress, [0, 1], [0, -100]);
@@ -58,13 +56,13 @@ export const ContainerScroll = ({
 export const Header = ({ translate, titleComponent }: any) => {
   return (
     <motion.div
-    style={{
-      translateY: translate,
-    }}
-    className="div max-w-5xl mx-auto text-center"
-  >
-    {titleComponent}
-  </motion.div>
+      style={{
+        translateY: translate,
+      }}
+      className="div max-w-5xl mx-auto text-center"
+    >
+      {titleComponent}
+    </motion.div>
   )
 }
 
@@ -87,15 +85,15 @@ export const Card = ({
       }}
       className="max-w-5xl -mt-12 mx-auto h-[30rem] md:h-[40rem] w-full border-4 border-[#6C6C6C] p-6 bg-[#222222] rounded-[30px] shadow-2xl"
     >
-                 <div className="absolute top-2 right-2 rounded-full text-xs font-bold bg-white px-2 py-1">
-            </div>
-            <img
-              src="/temp-banner.png"
-              className="rounded-tr-md h-full w-full rounded-tl-md text-sm "
-              alt="thumbnail"
-            />
-            <div className="p-4">
-            </div>
+      <div className="absolute top-2 right-2 rounded-full text-xs font-bold bg-white px-2 py-1">
+      </div>
+      <img
+        src="./temp-banner.png"
+        className="rounded-tr-md h-full w-full rounded-tl-md text-sm "
+        alt="thumbnail"
+      />
+      <div className="p-4">
+      </div>
     </motion.div>
   )
 }

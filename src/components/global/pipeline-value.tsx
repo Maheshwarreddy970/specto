@@ -72,12 +72,12 @@ const PipelineValue = ({ subaccountId }: Props) => {
         <div className="flex items-center justify-between">
           <div>
             <p className="text-xs text-muted-foreground">
-              Closed ${pipelineClosedValue}
+              Closed $2499
             </p>
           </div>
           <div>
             <p className="text-xs text-muted-foreground">
-              Total ${totalPipelineValue + pipelineClosedValue}
+              Total $5439
             </p>
           </div>
         </div>

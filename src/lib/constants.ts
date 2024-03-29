@@ -230,3 +230,32 @@ export const defaultStyles: React.CSSProperties = {
   textAlign: 'left',
   opacity: '100%',
 }
+
+export const chartdata = [
+  {
+    date: 'Jan 23',
+    Running: 167,
+  },
+  {
+    date: 'Feb 23',
+    Running: 125,
+  },
+  {
+    date: 'Mar 23',
+    Running: 156,
+  },
+  {
+    date: 'Apr 23',
+    Running: 165,
+  },
+  {
+    date: 'May 23',
+    Running: 153,
+  },
+  {
+    date: 'Jun 23',
+    Running: 124,
+  },
+];
+
+
