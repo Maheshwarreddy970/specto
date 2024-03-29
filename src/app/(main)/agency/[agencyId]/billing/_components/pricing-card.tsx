@@ -10,6 +10,9 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card'
+import { CheckIcon } from 'lucide-react'
+import { CardBody, CardContainer, CardItem } from '@/components/global/3d-card'
+
 import { PricesList } from '@/lib/types'
 import { useModal } from '@/providers/modal-provider'
 import { useSearchParams } from 'next/navigation'
@@ -50,6 +53,7 @@ const PricingCard = ({
     setOpen(
       <CustomModal
         title={'Manage Your Plan'}
+
         subheading="You can change your plan at any time from the billings settings"
       >
         <SubscriptionFormWrapper
@@ -66,53 +70,53 @@ const PricingCard = ({
     )
   }
   return (
-    <Card className="flex flex-col justify-between lg:w-1/2">
-      <div>
-        <CardHeader className="flex flex-col md:!flex-row justify-between">
-          <div>
-            <CardTitle>{title}</CardTitle>
-            <CardDescription>{description}</CardDescription>
-          </div>
-          <p className="text-6xl font-bold">
-            {amt}
-            <small className="text-xs font-light text-muted-foreground">
-              {duration}
-            </small>
-          </p>
-        </CardHeader>
-        <CardContent>
-          <ul>
-            {features.map((feature) => (
-              <li
-                key={feature}
-                className="list-disc ml-4 text-muted-foreground"
-              >
-                {feature}
-              </li>
-            ))}
-          </ul>
-        </CardContent>
-      </div>
-      <CardFooter>
-        <Card className="w-full">
-          <div className="flex flex-col md:!flex-row items-center justify-between rounded-lg border gap-4 p-4">
-            <div>
-              <p>{highlightTitle}</p>
-              <p className="text-sm text-muted-foreground">
-                {highlightDescription}
-              </p>
-            </div>
+    <div>
 
-            <Button
-              className="md:w-fit w-full"
-              onClick={handleManagePlan}
-            >
-              {buttonCta}
-            </Button>
+      
+      <CardContainer className="inter-var ">
+        <CardBody className="bg-gray-50 relative group/card  dark:hover:shadow-2xl dark:hover:shadow-neutral-500/[0.1] dark:bg-black dark:border-[#E2CBFF] border-black/[0.1] w-full md:!w-[350px] h-auto rounded-xl p-6 border">
+          <CardItem
+            translateZ="50"
+            className="text-xl font-bold text-neutral-600 dark:text-white "
+          >
+            {title}
+            <h2 className="text-6xl ">{amt}</h2>
+          </CardItem>
+          <CardItem
+            translateZ="60"
+            className="text-neutral-500 text-sm max-w-sm mt-2 dark:text-neutral-300"
+          >
+            {description}
+            <ul className="my-4 flex flex-col gap-2">
+            <li  className="flex items-center gap-2">
+            {duration}
+  
+                </li>
+              {features.map((feature) => (
+                <li  key={feature} className="flex items-center gap-2">
+                  <CheckIcon />{feature}
+                </li>
+              ))}
+            </ul>
+          </CardItem>
+          <div className="flex justify-between items-center mt-8">
+              <CardItem
+                className="px-4 py-2 rounded-xl text-xs font-normal dark:text-white"
+              >
+                                  {highlightDescription}
+
+              </CardItem>
+              <CardItem
+                translateZ={20}
+                as="button"
+                onClick={handleManagePlan}
+                className="px-4 py-2 rounded-xl bg-black dark:bg-white dark:text-black text-white text-xs font-bold"
+              >
+{buttonCta}              </CardItem>
           </div>
-        </Card>
-      </CardFooter>
-    </Card>
+        </CardBody>
+      </CardContainer>
+    </div>
   )
 }
 

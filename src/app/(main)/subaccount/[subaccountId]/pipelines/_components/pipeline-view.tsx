@@ -12,7 +12,7 @@ import { Lane, Ticket } from '@prisma/client'
 import { Flag, Plus } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
-import { DragDropContext, DropResult, Droppable } from 'react-beautiful-dnd'
+import { DragDropContext, DropResult, Droppable ,Draggable} from 'react-beautiful-dnd'
 import PipelineLane from './pipeline-lane'
 
 type Props = {
@@ -135,7 +135,7 @@ const PipelineView = ({
 
   return (
     <DragDropContext onDragEnd={onDragEnd}>
-      <div className="bg-white dark:bg-background/60 rounded-xl p-4 use-automation-zoom-in">
+      <div className="bg-white/60 dark:bg-background/60 rounded-xl p-4 use-automation-zoom-in">
         <div className="flex items-center justify-between">
           <h1 className="text-2xl">{pipelineDetails?.name}</h1>
           <Button
@@ -158,37 +158,46 @@ const PipelineView = ({
               {...provided.droppableProps}
               ref={provided.innerRef}
             >
-              <div className="flex mt-4">
                 {allLanes.map((lane, index) => (
-                  <PipelineLane
-                    allTickets={allTickets}
-                    setAllTickets={setAllTickets}
-                    subaccountId={subaccountId}
-                    pipelineId={pipelineId}
-                    tickets={lane.Tickets}
-                    laneDetails={lane}
-                    index={index}
-                    key={lane.id}
-                  />
-                ))}
-                {provided.placeholder}
-              </div>
+                  <Draggable key={lane.id} draggableId={lane.id} index={index}>
+                    {(provided) => (
+                      <div ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
+                        <div className="flex mt-4">
+                        <PipelineLane
+                          allTickets={allTickets}
+                          setAllTickets={setAllTickets}
+                          subaccountId={subaccountId}
+                          pipelineId={pipelineId}
+                          tickets={lane.Tickets}
+                          laneDetails={lane}
+                          index={index}
+                          key={lane.id}
+                        />
+                    </div>
+                      </div>
+                    )}
+                  </Draggable>
+                )
+                )}
+
             </div>
           )}
         </Droppable>
-        {allLanes.length == 0 && (
-          <div className="flex items-center justify-center w-full flex-col">
-            <div className="opacity-100">
-              <Flag
-                width="100%"
-                height="100%"
-                className="text-muted-foreground"
-              />
+        {
+          allLanes.length == 0 && (
+            <div className="flex items-center justify-center w-full flex-col">
+              <div className="opacity-100">
+                <Flag
+                  width="100%"
+                  height="100%"
+                  className="text-muted-foreground"
+                />
+              </div>
             </div>
-          </div>
-        )}
-      </div>
-    </DragDropContext>
+          )
+        }
+      </div >
+    </DragDropContext >
   )
 }
 

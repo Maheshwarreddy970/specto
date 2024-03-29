@@ -100,7 +100,7 @@ const LaneForm: React.FC<CreateLaneFormProps> = ({
   return (
     <Card className="w-full ">
       <CardHeader>
-        <CardTitle>Lane Details</CardTitle>
+        <CardTitle className='text-black'>Lane Details</CardTitle>
       </CardHeader>
       <CardContent>
         <Form {...form}>
@@ -114,9 +114,10 @@ const LaneForm: React.FC<CreateLaneFormProps> = ({
               name="name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Lane Name</FormLabel>
+                  <FormLabel className='text-black'>Lane Name</FormLabel>
                   <FormControl>
                     <Input
+                      className='text-black dark:bg-white '
                       placeholder="Lane Name"
                       {...field}
                     />
@@ -127,11 +128,18 @@ const LaneForm: React.FC<CreateLaneFormProps> = ({
             />
 
             <Button
-              className="w-20 mt-4"
+              className="p-[3px] relative mt-6"
               disabled={isLoading}
               type="submit"
             >
-              {form.formState.isSubmitting ? <Loading /> : 'Save'}
+              <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-lg" />
+              <div className="px-8 py-2 w-full bg-black rounded-[6px]  relative group transition duration-200 text-white hover:bg-transparent">
+                {form.formState.isSubmitting ?
+                  <div className='mt-2'>
+                    <Loading />
+                  </div> :
+                  'Save'}
+              </div>
             </Button>
           </form>
         </Form>

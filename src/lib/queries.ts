@@ -18,7 +18,8 @@ import { v4 } from 'uuid'
 import {
   CreateMediaType,
 } from './types'
-
+import { z } from 'zod'
+import { revalidatePath } from 'next/cache'
 
 export const getAuthUserDetails = async () => {
   const user = await currentUser()
@@ -346,9 +347,19 @@ export const upsertSubAccount = async (subAccount: SubAccount) => {
             link: `/subaccount/${subAccount.id}/settings`,
           },
           {
+            name: 'Funnels',
+            icon: 'pipelines',
+            link: `/subaccount/${subAccount.id}/funnels`,
+          },
+          {
             name: 'Media',
             icon: 'database',
             link: `/subaccount/${subAccount.id}/media`,
+          },
+          {
+            name: 'Automations',
+            icon: 'chip',
+            link: `/subaccount/${subAccount.id}/automations`,
           },
           {
             name: 'Pipelines',

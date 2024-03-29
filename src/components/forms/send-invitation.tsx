@@ -77,8 +77,8 @@ const SendInvitation: React.FC<SendInvitationProps> = ({ agencyId }) => {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Invitation</CardTitle>
-        <CardDescription>
+        <CardTitle className='text-black'>Invitation</CardTitle>
+        <CardDescription className='text-black'>
           An invitation will be sent to the user. Users who already have an
           invitation sent out to their email, will not receive another
           invitation.
@@ -112,23 +112,23 @@ const SendInvitation: React.FC<SendInvitationProps> = ({ agencyId }) => {
               control={form.control}
               name="role"
               render={({ field }) => (
-                <FormItem className="flex-1">
-                  <FormLabel>User role</FormLabel>
+                <FormItem className="flex-1 bg-white text-black">
+                  <FormLabel className='text-black'>User role</FormLabel>
                   <Select
                     onValueChange={(value) => field.onChange(value)}
                     defaultValue={field.value}
                   >
                     <FormControl>
                       <SelectTrigger>
-                        <SelectValue placeholder="Select user role..." />
+                        <SelectValue className='text-black bg-white dark:text-black' placeholder="Select user role..." />
                       </SelectTrigger>
                     </FormControl>
-                    <SelectContent>
-                      <SelectItem value="AGENCY_ADMIN">Agency Admin</SelectItem>
-                      <SelectItem value="SUBACCOUNT_USER">
+                    <SelectContent className='bg-white'>
+                      <SelectItem className='bg-white text-black' value="AGENCY_ADMIN">Agency Admin</SelectItem>
+                      <SelectItem className='text-black bg-white' value="SUBACCOUNT_USER">
                         Sub Account User
                       </SelectItem>
-                      <SelectItem value="SUBACCOUNT_GUEST">
+                      <SelectItem className='text-black bg-white' value="SUBACCOUNT_GUEST">
                         Sub Account Guest
                       </SelectItem>
                     </SelectContent>
@@ -140,8 +140,12 @@ const SendInvitation: React.FC<SendInvitationProps> = ({ agencyId }) => {
             <Button
               disabled={form.formState.isSubmitting}
               type="submit"
+              className="p-[3px] relative"
             >
-              {form.formState.isSubmitting ? <ButtonLoading /> : 'Send Invitation'}
+              <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-lg" />
+              <div className="px-8 py-2 w-full  bg-black rounded-[6px]  relative group transition duration-200 text-white hover:bg-transparent">
+                {form.formState.isSubmitting ? <ButtonLoading /> : 'Send Invitation'}
+              </div>
             </Button>
           </form>
         </Form>

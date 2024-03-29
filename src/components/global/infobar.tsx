@@ -12,12 +12,23 @@ import {
   SheetTrigger,
 } from '../ui/sheet'
 import { Role } from '@prisma/client'
+import Logo from "@/../public/1711550690031.png"
 import { Card } from '../ui/card'
 import { Switch } from '../ui/switch'
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar'
 import { ThemeToggle } from './ThemeTouggle'
 import Bell from '../costcomponents/Bell'
+import { DM_Sans,Righteous } from 'next/font/google'
+import Image from 'next/image'
 
+
+const Righteousfont = Righteous({
+  weight: '400',
+  subsets:['latin-ext'],
+  style: ['normal'],
+
+
+})
 
 type Props = {
   notifications: NotificationWithUser | []
@@ -52,6 +63,12 @@ const InfoBar = ({ notifications, subAccountId, className, role }: Props) => {
           className
         )}
       >
+        <div className='flex ml-16 '>
+
+          <Image src={Logo} alt='logo' className='w-8 h-8'></Image>
+        <p className={`${Righteousfont.className} text-3xl `}>
+          pecto</p>
+        </div>
         <div className="flex items-center gap-2 ml-auto">
           <div className='mr-2 size-[16]'>
         <UserButton afterSignOutUrl="/" />
@@ -59,6 +76,7 @@ const InfoBar = ({ notifications, subAccountId, className, role }: Props) => {
 
           <Sheet>
             <SheetTrigger>
+            
               <Bell></Bell>
             </SheetTrigger>
             <SheetContent className="mt-4 mr-4 pr-4 overflow-scroll">

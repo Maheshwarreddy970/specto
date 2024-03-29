@@ -285,9 +285,10 @@ const UserDetails = ({ id, type, subAccounts, userData }: Props) => {
               control={form.control}
               name="role"
               render={({ field }) => (
-                <FormItem className="flex-1">
-                  <FormLabel> User Role</FormLabel>
+                <FormItem className="flex-1 bg-white">
+                  <FormLabel className='text-black'> User Role</FormLabel>
                   <Select
+              
                     disabled={field.value === 'AGENCY_OWNER'}
                     onValueChange={(value) => {
                       if (
@@ -309,8 +310,8 @@ const UserDetails = ({ id, type, subAccounts, userData }: Props) => {
                         <SelectValue placeholder="Select user role..." />
                       </SelectTrigger>
                     </FormControl>
-                    <SelectContent>
-                      <SelectItem value="AGENCY_ADMING">
+                    <SelectContent className='bg-green-700'>
+                      <SelectItem className='bg-white text-black ' value="AGENCY_ADMING">
                         Agency Admin
                       </SelectItem>
                       {(data?.user?.role === 'AGENCY_OWNER' ||
@@ -319,10 +320,10 @@ const UserDetails = ({ id, type, subAccounts, userData }: Props) => {
                           Agency Owner
                         </SelectItem>
                       )}
-                      <SelectItem value="SUBACCOUNT_USER">
+                      <SelectItem className='bg-white  text-black' value="SUBACCOUNT_USER">
                         Sub Account User
                       </SelectItem>
-                      <SelectItem value="SUBACCOUNT_GUEST">
+                      <SelectItem className='bg-white  text-black' value="SUBACCOUNT_GUEST">
                         Sub Account Guest
                       </SelectItem>
                     </SelectContent>

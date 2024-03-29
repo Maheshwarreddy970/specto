@@ -79,14 +79,14 @@ const SubscriptionFormWrapper = ({ customerId, planExists }: Props) => {
           <Card
             onClick={() => setSelectedPriceId(price.id as Plan)}
             key={price.id}
-            className={clsx('relative cursor-pointer transition-all', {
+            className={clsx('text-black relative cursor-pointer transition-all', {
               'border-primary': selectedPriceId === price.id,
             })}
           >
             <CardHeader>
               <CardTitle>
                 ${price.unit_amount ? price.unit_amount / 100 : '0'}
-                <p className="text-sm text-muted-foreground">
+                <p className="text-black text-sm text-muted-foreground">
                   {price.nickname}
                 </p>
                 <p className="text-sm text-muted-foreground">
