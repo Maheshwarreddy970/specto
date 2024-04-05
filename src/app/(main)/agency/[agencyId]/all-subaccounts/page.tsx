@@ -50,7 +50,7 @@ const AllSubaccountsPage = async ({ params }: Props) => {
             <CommandEmpty>No Results Found.</CommandEmpty>
             <CommandGroup heading="Sub Accounts">
               {!!user.Agency?.SubAccount.length ? (
-                user.Agency.SubAccount.map((subaccount: SubAccount) => (
+                user.Agency.SubAccount.map((subaccount: SubAccount,index) => (
                   <CommandItem
                     key={subaccount.id}
                     className="h-32 !bg-background my-2 text-primary border-[1px] border-border p-4 rounded-lg hover:!bg-background cursor-pointer transition-all"

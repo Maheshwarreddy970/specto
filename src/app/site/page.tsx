@@ -38,15 +38,15 @@ export default function Home() {
           />
         </div>
       </section>
-      <section className="sm:mt-96 bg-stone-950	">
+      <section className=" bg-stone-950	">
         <HeroScrollDemo></HeroScrollDemo>
       </section>
       <section className="mt-[-500px] bg-stone-950		">
         <LampComponent />
         <div className="flex flex-wrap items-center justify-center flex-col md:flex-row gap-8 -mt-72">
           {
-            pricingCards.map((features) => (
-              <CardContainer className="inter-var ">
+            pricingCards.map((features,index) => (
+              <CardContainer key={index} className="inter-var ">
                 <CardBody className="bg-gray-50 relative group/card  dark:hover:shadow-2xl dark:hover:shadow-neutral-500/[0.1] dark:bg-black dark:border-[#E2CBFF] border-black/[0.1] w-full md:!w-[350px] h-auto rounded-xl p-6 border">
                   <CardItem
                     translateZ="50"

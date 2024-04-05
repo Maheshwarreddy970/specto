@@ -92,8 +92,8 @@ const PricingCard = ({
             {duration}
   
                 </li>
-              {features.map((feature) => (
-                <li  key={feature} className="flex items-center gap-2">
+              {features.map((feature,index) => (
+                <li  key={index} className="flex items-center gap-2">
                   <CheckIcon />{feature}
                 </li>
               ))}
