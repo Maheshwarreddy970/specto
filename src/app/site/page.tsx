@@ -61,8 +61,8 @@ export default function Home() {
                   >
                     {features.description}
                     <ul className="my-4 flex flex-col gap-2">
-                      {features.features.map((points) => (
-                        <li className="flex items-center gap-2">
+                      {features.features.map((points,index) => (
+                        <li key={index} className="flex items-center gap-2">
                           <CheckIcon />{points}
                         </li>
                       ))}
