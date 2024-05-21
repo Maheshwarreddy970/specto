@@ -64,10 +64,8 @@ const InfoBar = ({ notifications, subAccountId, className, role }: Props) => {
         )}
       >
         <div className='flex ml-16 '>
-
-          <Image src={Logo} alt='logo' className='w-8 h-8'></Image>
         <p className={`${Righteousfont.className} text-3xl `}>
-          pecto</p>
+          Specto</p>
         </div>
         <div className="flex items-center gap-2 ml-auto">
           <div className='mr-2 size-[16]'>

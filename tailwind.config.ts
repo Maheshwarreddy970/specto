@@ -21,6 +21,7 @@ module.exports = {
 
     // rest of the code
     extend: {
+      
       colors: {
         // light mode
         tremor: {
@@ -111,15 +112,18 @@ module.exports = {
         'tremor-metric': ['1.875rem', { lineHeight: '2.25rem' }],
       },
       animation: {
+        spotlight: "spotlight 2s ease .75s 1 forwards",
         aurora: "aurora 60s linear infinite",
       },
       keyframes: {
-        aurora: {
-          from: {
-            backgroundPosition: "50% 50%, 50% 50%",
+        spotlight: {
+          "0%": {
+            opacity: 0,
+            transform: "translate(-72%, -62%) scale(0.5)",
           },
-          to: {
-            backgroundPosition: "350% 50%, 350% 50%",
+          "100%": {
+            opacity: 1,
+            transform: "translate(-50%,-40%) scale(1)",
           },
         },
       },
