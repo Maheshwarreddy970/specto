@@ -1,6 +1,6 @@
-import BlurPage from '@/components/global/blur-page'
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
-import { Badge } from '@/components/ui/badge'
+import BlurPage from '@/components/global/blur-page';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { Badge } from '@/components/ui/badge';
 import {
   Table,
   TableBody,
@@ -8,27 +8,26 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from '@/components/ui/table'
-import { db } from '@/lib/db'
-import { Contact, SubAccount, Ticket } from '@prisma/client'
-import format from 'date-fns/format'
-import React from 'react'
-import CraeteContactButton from './_components/create-contact-btn'
+} from '@/components/ui/table';
+import { db } from '@/lib/db';
+import { Contact, SubAccount, Ticket } from '@prisma/client';
+import { format } from 'date-fns';  // Correct import
+import React from 'react';
+import CraeteContactButton from './_components/create-contact-btn';
 
 type Props = {
-  params: { subaccountId: string }
-}
+  params: { subaccountId: string };
+};
 
 const ContactPage = async ({ params }: Props) => {
   type SubAccountWithContacts = SubAccount & {
-    Contact: (Contact & { Ticket: Ticket[] })[]
-  }
+    Contact: (Contact & { Ticket: Ticket[] })[];
+  };
 
   const contacts = (await db.subAccount.findUnique({
     where: {
       id: params.subaccountId,
     },
-
     include: {
       Contact: {
         include: {
@@ -43,24 +42,24 @@ const ContactPage = async ({ params }: Props) => {
         },
       },
     },
-  })) as SubAccountWithContacts
+  })) as SubAccountWithContacts;
 
-  const allContacts = contacts.Contact
+  const allContacts = contacts.Contact;
 
   const formatTotal = (tickets: Ticket[]) => {
-    if (!tickets || !tickets.length) return '$0.00'
+    if (!tickets || !tickets.length) return '$0.00';
     const amt = new Intl.NumberFormat(undefined, {
       style: 'currency',
       currency: 'USD',
-    })
+    });
 
     const laneAmt = tickets.reduce(
       (sum, ticket) => sum + (Number(ticket?.value) || 0),
       0
-    )
+    );
 
-    return amt.format(laneAmt)
-  }
+    return amt.format(laneAmt);
+  };
   return (
     <BlurPage>
       <h1 className="text-4xl p-4">Contacts</h1>

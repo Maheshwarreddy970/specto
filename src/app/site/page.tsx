@@ -43,7 +43,7 @@ export default function Home() {
       <section className="	">
         <FuturesCard></FuturesCard>
       </section>
-      <section className="">
+      <section className=" pb-40">
         <Pricingcomponent></Pricingcomponent>
       </section>
     </main>

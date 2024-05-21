@@ -13,13 +13,13 @@ export function FuturesCard() {
         Specto App  Features
       </motion.h1>
       <div className="py-20 flex flex-col lg:flex-row   items-center justify-center  w-full gap-4 mx-auto px-8">
-        <Card title="Sheetal is Nisha" icon={"Agency"}>
+        <Card title=" Specto allows agency owners to create clients, manage teams, and design custom workflows for project management." icon={"Agency"}>
           <CanvasRevealEffect
             animationSpeed={5.1}
             containerClassName="bg-emerald-900"
           />
         </Card>
-        <Card title="Nisha is Munni" icon={"Team"}>
+        <Card title="Team members have restricted access to view only allocated client projects, while agency owners can assign individual tasks to team members." icon={"Team"}>
           <CanvasRevealEffect
             animationSpeed={3}
             containerClassName=""
@@ -32,7 +32,7 @@ export function FuturesCard() {
           {/* Radial gradient for the cute fade */}
           <div className="absolute inset-0 [mask-image:radial-gradient(400px_at_center,white,transparent)] bg-black/50 dark:bg-black/90" />
         </Card>
-        <Card title="Munni is Aditi" icon={"Client"}>
+        <Card title="Clients have individual accounts where they can monitor the progress and work pipeline of their projects." icon={"Client"}>
           <CanvasRevealEffect
             animationSpeed={3}
             containerClassName="bg-sky-600"
