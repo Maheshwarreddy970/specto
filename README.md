@@ -1,23 +1,22 @@
-<img src="apps/web/public/sketch1704618933812two - Copy.png" alt="logo" width="100" height="100">
-
-# ChatDoc
+# Specto
 
 ## Introduction
 
-ChatDoc is a [brief description of the project].
+Specto
+A powerful agency management platform designed to centralize team collaboration and client management. With Specto, users can create teams, add members, and manage clients efficiently on a single platform. The intuitive interface and dynamic charting capabilities facilitate goal setting, progress tracking, and web design, enhancing productivity and performance.
 
 ## Getting Started
 
-To get started with ChatDoc, follow these steps:
+To get started with Specto, follow these steps:
 
 ## Clone the Repository
 
 ```bash
-git clone git@github.com:Maheshwarreddy970/chatdoc.git
+git@github.com:Maheshwarreddy970/specto.git
 ```
 
 ```bash
-cd chatdoc
+cd specto
 ```
 
 ## Environment Variables
@@ -34,28 +33,21 @@ nano .env  # (or use any text editor to modify .env)
 Here is an example of the environment variables needed for the project. Replace the placeholder values with your actual credentials.
 
 ```bash
-# Kinde configuration
+DATABASE_URL="YOUR_DATABASE_URL_HERE"
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_yourkeyhere
+CLERK_SECRET_KEY=sk_test_yourkeyhere
+NEXT_PUBLIC_CLERK_SIGN_IN_URL=/agency/sign-in
+NEXT_PUBLIC_CLERK_SIGN_UP_URL=/agency/sign-up
+NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL=/
+NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL=/
+NEXT_PUBLIC_URL=http://localhost:3000/
+NEXT_PUBLIC_DOMAIN=localhost:3000
+NEXT_PUBLIC_SCHEME=http://
 
-KINDE_CLIENT_ID=your_kinde_client_id
-KINDE_CLIENT_SECRET=your_kinde_client_secret
-KINDE_ISSUER_URL=https://your_kinde_issuer_url
-KINDE_SITE_URL=http://localhost:3000
-KINDE_POST_LOGOUT_REDIRECT_URL=http://localhost:3000
-KINDE_POST_LOGIN_REDIRECT_URL=http://localhost:3000/dashboard
+NEXT_PUBLIC_S3_ACCESS_KEY_ID=your_s3_access_key_id
+NEXT_PUBLIC_S3_SECRET_ACCESS_KEY=your_s3_secret_access_key
+NEXT_PUBLIC_S3_BUCKET_NAME=your_bucket_name
 
-# OpenAI configuration
-
-OPENAI_API_KEY=your_openai_api_key
-
-# AWS S3 configuration
-
-NEXT_PUBLIC_S3_ACCESS_KEY_ID=your_aws_s3_access_key_id
-NEXT_PUBLIC_S3_BUCKET_NAME=your_aws_s3_bucket_name
-NEXT_PUBLIC_S3_SECRET_ACCESS_KEY=your_aws_s3_secret_access_key
-
-# Pinecone configuration
-
-PINECONE_KEY=your_pinecone_key
 ```
 
 Make sure to fill in the necessary environment variables in the .env file.
@@ -63,7 +55,13 @@ Make sure to fill in the necessary environment variables in the .env file.
 ## Install Dependencies
 
 ```bash
+npm install
+# or
 yarn install
+# or
+pnpm install
+# or
+bun install
 ```
 
 ## Development
@@ -71,84 +69,60 @@ yarn install
 To start the development server:
 
 ```bash
-yarn turbo dev or yarn dev
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
 ```
 
 This will run the application in development mode.
+
+Navigate to http://localhost:3000 to view the application.
 
 ## Chatdocrepo File Structure
 
 ChatDoc uses a monorepo setup managed by Turborepo and includes a Next.js application. Below is an overview of the file structure:
 
-```bash
+````bash
+# Specto
 
-chatdoc/
-├── apps/
-│ └── web/ # Next.js application
-│ ├── public/ # Public assets
-│ ├── pages/ # Next.js pages
-│ ├── components/ # React components
-│ ├── styles/ # Global styles
-│ ├── utils/ # Utility functions
-│ ├── hooks/ # Custom hooks
-│ ├── next.config.js # Next.js configuration
-│ └── tsconfig.json # TypeScript configuration
-├── packages/
-│ ├── ui/ # Shared UI components package
-│ │ ├── src/ # Source code for UI components
-│ │ ├── index.ts # Entry point for UI components
-│ │ └── package.json # Package configuration
-│ ├── database/ # Database package
-│ │ ├── prisma/ # Prisma schema and migrations
-│ │ ├── src/ # Database access code
-│ │ ├── index.ts # Entry point for the database package
-│ │ └── package.json # Package configuration
-│ └── trpc/ # TRPC package
-│ ├── src/ # Source code for TRPC
-│ │ ├── config/ # TRPC configuration
-│ │ │ └── trpc.ts # TRPC setup and initialization
-│ │ ├── zod/ # Zod schemas
-│ │ ├── index.ts # Entry point for TRPC
-│ └── package.json # Package configuration
-├── .env.example # Example environment variables
-├── .gitignore # Git ignore file
-├── package.json # Root package configuration
-├── turbo.json # Turborepo configuration
-└── README.md # Project documentation
-```
+Specto is a cutting-edge web application designed to provide seamless user experiences with robust backend support. This repository houses the core of Specto, including its frontend, backend, and associated configurations.
 
-## TRPC Configuration
+## Project Structure
 
-`packages/trpc/src/config/trpc.ts`
-This file sets up and initializes the TRPC configuration.
+Below is the structure of the main folders and files:
 
-```bash
-import { createTRPCNext } from '@trpc/next';
-import { AppRouter } from '../routers/\_app';
+```plaintext
+specto/
+│
+├── prisma/                         # Prisma ORM setup and schema files
+├── public/                         # Public assets (images, fonts, etc.)
+├── src/                            # Source code for the application
+│   ├── app/                        # Main application folder
+│   │   ├── futures/                # Feature modules
+│   │   │   ├── card/               # Card components or modules
+│   │   ├── components/             # Reusable UI components
+│   │   ├── text/                   # Text-related utilities or components
+│   │   ├── center/                 # Centering utilities or components
+│   │   ├── lib/                    # Libraries and utility functions
+│   │   ├── providers/              # Providers for context or third-party services
+│   │   ├── stripe/                 # Stripe payment integration
+│   │   ├── utils/                  # General utilities
+│   ├── middleware.ts               # Middleware functions
+├── .eslintrc.json                  # ESLint configuration file
+├── .gitignore                      # Files and directories to be ignored by Git
+├── README.md                       # Project documentation
+├── components.json                 # Configuration for components
+├── next-env.d.ts                   # TypeScript environment settings for Next.js
+├── next.config.mjs                 # Next.js configuration file
+├── package-lock.json               # Auto-generated file for package version locking
+├── package.json                    # Node.js dependencies and scripts
+├── postcss.config.js               # PostCSS configuration
+├── tailwind.config.ts              # Tailwind CSS configuration
+├── tsconfig.json                   # TypeScript configuration
+├── yarn.lock                       # Yarn dependency lock file
 
-export const trpc = createTRPCNext<AppRouter>({
-config() {
-return {
-url: '/api/trpc',
-};
-},
-ssr: true,
-});
-```
-
-`packages/trpc/src/zod/index.ts`
-
-```bash
-Zod schemas for validation.
-import { z } from 'zod';
-```
-
-export const exampleSchema = z.object({
-exampleField: z.string().min(1),
-});
-
-`packages/trpc/src/index.ts`
-
-```bash
-export \* from './config/trpc';
-```
+````
